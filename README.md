@@ -1,5 +1,10 @@
 # vue3-test
 
+This is regular Vue CLI build demo.
+
+Flatfile vuejs3 + Vite demo can be found on *MAIN BRANCH*
+
+
 ## Project setup
 ```
 npm install
