@@ -1,71 +1,31 @@
-<script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import { ref, computed, onBeforeMount, reactive, onMounted, provide } from "vue";
-// import { FlatfileButton } from "@flatfile/vuejs";
-import { useActions, useState, useGetters } from "vuex-composition-helpers";
+<template>
+   Button?
+  <FlatfileButton :token="token">
+    Upload to Flatfile!
+  </FlatfileButton>
+</template>
 
-import { useStore } from "vuex";
+<script>
+import  FlatfileButton  from "./components/ff.vue";
 
-import FF from './components/ff.vue'
-
-// export default {
-//   components: {
-//     FlatfileButton
-//   }
-// }
-
-const licenseKey = ref("5d5f3329-f255-49b1-9b61-37648d4445f9");
-
-const customer = reactive({
-  userId: "12345",
-});
-
-console.log("inside setup");
-console.log(licenseKey);
-
-const settings = reactive({
-  type: "test import",
-
-  fields: [
-    { label: "name", key: "Name" },
-    { label: "email", key: "Email" },
-  ],
-});
-
-const onData = (results) => {
-  // Do something with the data here
-
-  console.log(results);
-  console.log("inside onData");
-
-  return "Done!";
-};
-
-const onError = (err) => {
-  console.error(err);
+export default {
+  name: 'App',
+  components: {
+    FlatfileButton,
+  },
+  data: () => ({
+    token: 'Your_Token_You_Received_From_Your_Backend',    
+  })
 }
 </script>
 
-<template>
-  <div>
-    <!-- <FF :token="licenseKey" :customer="customer" :settings="settings" :onError="onError">Test</FF> -->
-    <FF :token="licenseKey">
-      Import Contacts 123
-    </FF>
-  </div>
-</template>
-
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
 }
 </style>
